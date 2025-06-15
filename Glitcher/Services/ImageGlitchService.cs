@@ -8,6 +8,12 @@ public class ImageGlitchService : IImageGlitchService
 
     public void GlitchImage(string imagePath, string outputPath, int amount = 1, int numberOfBytes = 500)
     {
+        if (!File.Exists(imagePath))
+        {
+            Console.WriteLine("Image not found. Make sure you have 'input.jpg' inside your root folder");
+            return;
+        }
+        
         if (!Directory.Exists("output"))
         {
             Directory.CreateDirectory("output");
